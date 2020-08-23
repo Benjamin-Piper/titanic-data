@@ -1,4 +1,14 @@
-# README.md
+# Quantiful Frontend Test 2020
+
+To begin:
+
+```
+cd fed-intern-test-2020
+
+npm install
+
+npm start
+```
 
 ### Brief summary of my findings
 
