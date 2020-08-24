@@ -8,6 +8,10 @@ import {
 
     Card, CardContent, Typography
 } from "@material-ui/core";
+import retrievePassengers from './PaidPassengerWithMaps.js'
+
+retrievePassengers().then(console.log);
+//console.log(myPaidPassengers);
 
 // some random example data of number of cats and dogs seen on each day
 const exampleData = [

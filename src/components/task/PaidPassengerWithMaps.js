@@ -9,19 +9,17 @@ const ticketClasses = new Map([ [1, "First"], [2, "Second"], [3, "Third"]]);
 
 const paidPassengers = []; // storing an array of maps
 
-function main() {
+const retrievePassengers = async function () {
     // Step 1: Fetch
     const passengerData = "https://public.opendatasoft.com/api/records/1.0/search/?dataset=titanic-passengers&q=&rows=100";
     const passengers = new Request(passengerData);
     
-	fetch(passengers)
-		.then(response => response.json())
-		.then(data => {
-            data.records.forEach(record => process(record.fields));
-        })
-        .catch(error => console.log(error));
-        
-    // Step 2: Process and store
+    const response = await fetch(passengers);
+    const data = await response.json();
+    data.records.forEach(record => paidPassengers.push(process(record.fields)));
+
+    return paidPassengers;
+
     function process(passengerDetails) {
        const passengerHasPaid = passengerDetails.fare > 0;
 
@@ -48,7 +46,8 @@ function main() {
                         newPaidPassenger.set(tableHeader[index], passengerDetails[key]);
                 }
             });
-            paidPassengers.push(newPaidPassenger);           
+            
+            return newPaidPassenger;
         }
     }
 }
@@ -85,5 +84,4 @@ function classify(fare) {
     return classifications.filter(i => i[0]).flat()[1];
 }
 
-main();
-console.log(paidPassengers);
+export default retrievePassengers;
