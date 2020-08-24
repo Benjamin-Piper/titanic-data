@@ -12,11 +12,7 @@ const paidPassengers = []; // Storing an array of maps.
 // Main.
 const retrievePassengers = async function () {
     // Step 1: Fetch.
-    const passengerData = "https://public.opendatasoft.com/api/records/1.0/search/?dataset=titanic-passengers&q=&rows=1000";
-    const passengers = new Request(passengerData);
-    
-    const response = await fetch(passengers);
-    const data = await response.json();
+    const data = await fetchRequest();
 
     // Step 2: Process each passenger.
     data.records.forEach(record => process(record.fields));
@@ -24,9 +20,16 @@ const retrievePassengers = async function () {
     return paidPassengers;
 }
 
+export async function fetchRequest() {
+    const passengers = "https://public.opendatasoft.com/api/records/1.0/search/?dataset=titanic-passengers&q=&rows=1000";
+    const response = await fetch(passengers);
+    const data = await response.json();
+
+    return data;
+}
+
 function process(passengerDetails) {
     const passengerHasPaid = passengerDetails.fare > 0;
-
      if (passengerHasPaid) {
          // Maps are used to preserve insertion order.
          const newPaidPassenger = new Map();
