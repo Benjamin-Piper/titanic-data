@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Card, CardContent, Typography} from "@material-ui/core";
 import Graph from "./Graph";
-import PaidPassengerTable from "./PaidPassengerTable";
+import PaidPassengerTable from "./table/PaidPassengerTable";
 
 // import data from "../../data";
 

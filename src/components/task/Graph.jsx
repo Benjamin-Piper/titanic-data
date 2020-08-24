@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import {fetchRequest} from './PaidPassengers.js'
+import {fetchRequest} from './table/PaidPassengers.js'
 
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
