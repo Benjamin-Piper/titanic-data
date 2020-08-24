@@ -14,7 +14,7 @@ npm start
 
 **TODO**
 
-### How I approached the task
+### How I approached the task (in chronological order)
 
 #### Table headers
 
@@ -69,7 +69,15 @@ After researching and checking out the React docs a bit I decided to use a class
 
 **Note:** While rendering I needed to convert my maps to arrays as I found that React can't render objects.
 
-### Look into drawing graphs with Rechart TODO
+### Drawing a graph with Recharts (Optional task)
+
+After researching and installing Rechart with npm, I decided to display where the paid passengers embarked from.
+
+For this I had to refactor the backend a little bit and then export the fetch request. From there I was able to simply increment an array depending where each index was mapped to the location name.
+
+Then came formatting the data into objects to be rendered into an svg by Recharts.
+
+I also decided to keep styling of all components localised to their respective files to maintain encapsulation.
 
 ### Look into filtering TODO
 
