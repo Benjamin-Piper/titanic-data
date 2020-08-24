@@ -63,8 +63,22 @@ Other things I did to make the code cleaner:
 - Reduced usage of if statements
 - Maxmised usage of array functiosn
 
-### Frontend TODO
+### Frontend
 
-- Making the dynamic table
-- Making it sortable
-- think about graphing with Recharts
+After researching and checking out the React docs a bit I decided to use a class as the component for the table. By using a class I was able to keep state of headings and rows. This meant that I could render promised data from the backend while also putting a quick and dirty `loading. . .` screen.
+
+**Note:** While rendering I needed to convert my maps to arrays as I found that React can't render objects.
+
+### Look into drawing graphs with Rechart TODO
+
+### Look into filtering TODO
+
+- alphabetical?
+	- surname
+	- given names
+- enum?
+	- embarked from
+	- ticket class
+	- fare class
+- numerical
+	- id
