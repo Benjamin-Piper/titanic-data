@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Card, CardContent, Typography} from "@material-ui/core";
-
+import Graph from "./Graph";
 import PaidPassengerTable from "./PaidPassengerTable";
 
 // import data from "../../data";
@@ -39,6 +39,10 @@ class Task extends Component {
                 { /* Replace this example table with your solution below. 
                 You are more than welcome to organise your code into different files where appropriate. */}
                 <PaidPassengerTable />
+                <div style={{marginTop: '50px'}}>
+                    <Typography style={ {textAlign: 'center'} }>Where did they all board from?</Typography>
+                    <Graph />
+                </div>
             </div>
         );
     }
