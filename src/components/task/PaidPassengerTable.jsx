@@ -18,6 +18,11 @@ import retrievePassengers from './PaidPassengers.js'
     // TODO use this component for sorting columns
 //}
 
+const tableStyling = {
+    height: '520px',
+    overflowY: 'scroll'
+}
+
 class PaidPassengerTable extends React.Component {
     constructor(props) {
         super(props);
@@ -45,7 +50,7 @@ class PaidPassengerTable extends React.Component {
 
     render() {
         return (
-            <Card>
+            <Card style={tableStyling}>
                 <CardContent>
                     <Typography>List of paid passengers abroad the RMS Titanic</Typography>
                     <Table>
