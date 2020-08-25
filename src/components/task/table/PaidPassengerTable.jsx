@@ -9,23 +9,19 @@ import {
     Card, CardContent, Typography
 } from "@material-ui/core";
 
-import retrievePassengers from './PaidPassengers.js'
-
-// https://www.smashingmagazine.com/2020/03/sortable-tables-react/
-// sorting tables, also see clickable ting at the end
-
-//const SortButton = () => {
-    // TODO use this component for sorting columns
-//}
+import retrievePassengers from './PaidPassengers.js';
+import Filter from './Filter';
 
 const tableStyling = {
-    height: '520px',
+    height: '500px',
     overflowY: 'scroll'
 }
 
 class PaidPassengerTable extends React.Component {
     constructor(props) {
         super(props);
+
+        this.updateTableWith = this.updateTableWith.bind(this);
         // Keep async data here.
         this.state = {
             headings: [],
@@ -40,7 +36,7 @@ class PaidPassengerTable extends React.Component {
             this.setState({headings: passengerHeadings});
 
             const passengerRows = [];
-            passengers.forEach((passenger,index) => {
+            passengers.forEach(passenger => {
                 const row = Array.from(passenger.values());
                 passengerRows.push(row);
             });
@@ -48,11 +44,16 @@ class PaidPassengerTable extends React.Component {
         });
     }
 
+    updateTableWith(filteredRows) {
+        this.setState({rows: filteredRows});
+    }
+
     render() {
         return (
             <Card style={tableStyling}>
                 <CardContent>
-                    <Typography>List of paid passengers abroad the RMS Titanic</Typography>
+                    <Typography style={{marginBottom: '20px'}}>List of paid passengers abroad the RMS Titanic</Typography>
+                    <Filter name="survived" updateTableWith ={this.updateTableWith} options={["Yes","No"]} />
                     <Table>
                         <TableHead>
                             <TableRow>
