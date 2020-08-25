@@ -1,19 +1,7 @@
 import React, { Component } from "react";
 import {Card, CardContent, Typography} from "@material-ui/core";
 import Graph from "./Graph";
-import PaidPassengerTable from "./table/FilterTable"
-
-// import data from "../../data";
-
-// Use the following url to access the data
-// https://public.opendatasoft.com/api/records/1.0/search/?dataset=titanic-passengers&q=&rows=1000
-// HINT: You should use "fetch".
-// If you have trouble with this, you can access a subset of the data through the uncommenting import "data" file above
-// console.log(data);
-
-// To find out about the fields inside the data, you can have a look at the data dictionary in the data description
-// on Kaggle here
-//  https://www.kaggle.com/c/titanic/data
+import PaidPassengerTable from "./table/PaidPassengerTable"
 
 class Task extends Component {
 
@@ -36,8 +24,8 @@ class Task extends Component {
                         </Typography>
                     </CardContent>
                 </Card>
-                { /* Replace this example table with your solution below. 
-                You are more than welcome to organise your code into different files where appropriate. */}
+
+                {/* My submitted task */}
                 <PaidPassengerTable />
                 <div style={{marginTop: '50px'}}>
                     <Typography style={ {textAlign: 'center'} }>Where did they all board from?</Typography>

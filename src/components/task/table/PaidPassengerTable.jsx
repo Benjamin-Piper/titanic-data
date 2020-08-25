@@ -44,6 +44,7 @@ class PaidPassengerTable extends React.Component {
         });
     }
 
+    // Filter componenet will call this.
     updateTableWith(filteredRows) {
         this.setState({rows: filteredRows});
     }
@@ -63,11 +64,21 @@ class PaidPassengerTable extends React.Component {
 
                         <TableBody>
                         {
-                            this.state.rows.map((row, index) => 
-                                <TableRow key={`row_${index}`}>
-                                    {row.map((value, index) => <TableCell key={`cell_${index}`}>{value}</TableCell>)}
-                                </TableRow>     
-                            )
+                            this.state.rows.map((row, index) => {
+                                const indexIsOdd = index % 2 === 1;
+                                let background = {};
+
+                                if (indexIsOdd) {
+                                    background = {backgroundColor: "#f2f2f2"}; // grey
+                                } else {
+                                    background = {backgroundColor: "#ffffff"}; // white
+                                }
+                                return (
+                                    <TableRow key={`row_${index}`} style={background}>
+                                        {row.map((value, index) => <TableCell key={`cell_${index}`}>{value}</TableCell>)}
+                                    </TableRow>
+                                )     
+                            })
                         }
                         </TableBody>
                     </Table>

@@ -9,7 +9,8 @@ const ticketClasses = new Map([ [1, "First"], [2, "Second"], [3, "Third"]]);
 
 const paidPassengers = []; // Storing an array of maps.
 
-// Main.
+// Main. (The default export)
+// Returns an Array of Maps.
 const retrievePassengers = async function () {
     // Step 1: Fetch.
     const data = await fetchRequest();
@@ -25,6 +26,8 @@ const retrievePassengers = async function () {
     return paidPassengers;
 }
 
+// Fetch function.
+// Returns the JSON.
 export async function fetchRequest() {
     const passengers = "https://public.opendatasoft.com/api/records/1.0/search/?dataset=titanic-passengers&q=&rows=1000";
     const response = await fetch(passengers);
@@ -33,7 +36,8 @@ export async function fetchRequest() {
     return data;
 }
 
-// TO DO
+// Processes each record.fields (an object).
+// Returns Map if passenger has paid, null otherwise.
 export function process(passenger) {
     const passengerHasPaid = passenger.fare > 0;
      if (passengerHasPaid) {
@@ -59,14 +63,15 @@ export function process(passenger) {
                      newPaidPassenger.set(tableHeader[index], passenger[key]);
              }
          });   
-         //paidPassengers.push(newPaidPassenger);
+
          return newPaidPassenger;
      } else {
         return null; // function must return something!
      }
  }
 
-// Helper: arrange a name string into a string array.
+// Helper: arranges a passenger's name.
+// Returns an array containing the surname and given names.
 function arraynge(nameString) {
     // The space and position is important!
     const byComma = ", ";
@@ -92,6 +97,7 @@ function arraynge(nameString) {
 }
 
 // Helper: classify fare as one of three types.
+// Returns either "Cheap", "Regular" or "Expensive".
 function classify(fare) {
     // Only one of these evaluates to true.
     const fareIsCheap = fare < 20;
