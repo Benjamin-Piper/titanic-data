@@ -31,7 +31,7 @@ export default class Graph extends PureComponent {
 
     // This function will tell render() to update when the promise is fulfilled.
     componentDidMount() {
-        const locations = ["Cherboug", "Queesntown", "Southampton"];
+        const locations = ["Cherboug", "Queenstown", "Southampton"];
         const locationData = [0, 0, 0];
         const graphData = [];
 

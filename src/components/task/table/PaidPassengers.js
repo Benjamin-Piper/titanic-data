@@ -4,7 +4,7 @@
 const passengerKeys = ["passengerid", "name", "sex", "embarked", "pclass", "fare", "survived"];
 const tableHeader   = ["id", ["surname", "given names"], "gender", "embarked from", "ticket class", "ticket fare class", "survived?"];
 
-const locations = new Map([ ["C", "Cherboug"], ["Q", "Queesntown"], ["S", "Southampton"]])
+const locations = new Map([ ["C", "Cherboug"], ["Q", "Queenstown"], ["S", "Southampton"]])
 const ticketClasses = new Map([ [1, "First"], [2, "Second"], [3, "Third"]]);
 
 const paidPassengers = []; // Storing an array of maps.
