@@ -3,7 +3,7 @@
 To begin:
 
 ```
-cd fed-intern-test-2020
+cd quantiful-frontend-test-2020
 
 npm install
 
