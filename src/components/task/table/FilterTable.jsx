@@ -16,7 +16,7 @@ const tableStyling = {
     overflowY: 'scroll'
 }
 
-class PaidPassengerTable extends React.Component {
+class FilterTable extends React.Component {
     constructor(props) {
         super(props);
         // Keep async data here.
@@ -57,7 +57,7 @@ class PaidPassengerTable extends React.Component {
                         {
                             this.state.rows.map((row, index) => {
                                 let background = {};
-                                if (index % 2 == 1) {
+                                if (index % 2 === 1) {
                                     background = {backgroundColor: '#F2F2F2'}; // odd = light grey
                                 } else {
                                     background = {backgroundColor: '#FFFFFF'} // even = white
@@ -77,4 +77,4 @@ class PaidPassengerTable extends React.Component {
     }
 }
 
-export default PaidPassengerTable;
+export default FilterTable;

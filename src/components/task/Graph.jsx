@@ -3,8 +3,9 @@ import React, { PureComponent } from 'react';
 import {fetchRequest} from './table/PaidPassengers.js'
 
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
-} from 'recharts';
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip
+}
+from 'recharts';
 
 
 const indexIncrementer = new Map([ ["C", 0], ["Q", 1], ["S", 2]])
