@@ -15,8 +15,13 @@ const retrievePassengers = async function () {
     const data = await fetchRequest();
 
     // Step 2: Process each passenger.
-    data.records.forEach(record => process(record.fields));
+    data.records.forEach(record => {
+        const newPassenger =  process(record.fields);
+        
+        if (newPassenger !== null) paidPassengers.push(newPassenger);
+    });
 
+    //console.log(paidPassengers);
     return paidPassengers;
 }
 
@@ -28,32 +33,36 @@ export async function fetchRequest() {
     return data;
 }
 
-function process(passengerDetails) {
-    const passengerHasPaid = passengerDetails.fare > 0;
+// TO DO
+export function process(passenger) {
+    const passengerHasPaid = passenger.fare > 0;
      if (passengerHasPaid) {
          // Maps are used to preserve insertion order.
          const newPaidPassenger = new Map();
          passengerKeys.forEach((key, index) => {
              switch(key) {
                  case "name":
-                     const names = arraynge(passengerDetails[key]);
+                     const names = arraynge(passenger[key]);
                      newPaidPassenger.set(tableHeader[index][0], names[0]);
                      newPaidPassenger.set(tableHeader[index][1], names[1]);
                      break;
                  case "embarked":
-                     newPaidPassenger.set(tableHeader[index], locations.get(passengerDetails[key]));
+                     newPaidPassenger.set(tableHeader[index], locations.get(passenger[key]));
                      break;
                  case "pclass":
-                     newPaidPassenger.set(tableHeader[index], ticketClasses.get(passengerDetails[key]));
+                     newPaidPassenger.set(tableHeader[index], ticketClasses.get(passenger[key]));
                      break;
                  case "fare":
-                     newPaidPassenger.set(tableHeader[index], classify(passengerDetails.fare));
+                     newPaidPassenger.set(tableHeader[index], classify(passenger.fare));
                      break;
                  default:
-                     newPaidPassenger.set(tableHeader[index], passengerDetails[key]);
+                     newPaidPassenger.set(tableHeader[index], passenger[key]);
              }
          });   
-         paidPassengers.push(newPaidPassenger);
+         //paidPassengers.push(newPaidPassenger);
+         return newPaidPassenger;
+     } else {
+        return null; // function must return something!
      }
  }
 

@@ -9,16 +9,19 @@ import {
     Card, CardContent, Typography
 } from "@material-ui/core";
 
-import retrievePassengers from './PaidPassengers.js'
+import retrievePassengers from './PaidPassengers.js';
+import Filter from './Filter';
 
 const tableStyling = {
-    height: '520px',
+    height: '500px',
     overflowY: 'scroll'
 }
 
-class FilterTable extends React.Component {
+class PaidPassengerTable extends React.Component {
     constructor(props) {
         super(props);
+
+        this.updateTableWith = this.updateTableWith.bind(this);
         // Keep async data here.
         this.state = {
             headings: [],
@@ -33,7 +36,7 @@ class FilterTable extends React.Component {
             this.setState({headings: passengerHeadings});
 
             const passengerRows = [];
-            passengers.forEach((passenger,index) => {
+            passengers.forEach(passenger => {
                 const row = Array.from(passenger.values());
                 passengerRows.push(row);
             });
@@ -41,11 +44,16 @@ class FilterTable extends React.Component {
         });
     }
 
+    updateTableWith(filteredRows) {
+        this.setState({rows: filteredRows});
+    }
+
     render() {
         return (
             <Card style={tableStyling}>
                 <CardContent>
-                    <Typography>List of paid passengers abroad the RMS Titanic</Typography>
+                    <Typography style={{marginBottom: '20px'}}>List of paid passengers abroad the RMS Titanic</Typography>
+                    <Filter name="survived" updateTableWith ={this.updateTableWith} options={["Yes","No"]} />
                     <Table>
                         <TableHead>
                             <TableRow>
@@ -55,19 +63,11 @@ class FilterTable extends React.Component {
 
                         <TableBody>
                         {
-                            this.state.rows.map((row, index) => {
-                                let background = {};
-                                if (index % 2 === 1) {
-                                    background = {backgroundColor: '#F2F2F2'}; // odd = light grey
-                                } else {
-                                    background = {backgroundColor: '#FFFFFF'} // even = white
-                                }
-                                return (
-                                    <TableRow key={`row_${index}`} style={background}>
-                                        {row.map((value, index) => <TableCell key={`cell_${index}`}>{value}</TableCell>)}
-                                    </TableRow>
-                                )     
-                            })
+                            this.state.rows.map((row, index) => 
+                                <TableRow key={`row_${index}`}>
+                                    {row.map((value, index) => <TableCell key={`cell_${index}`}>{value}</TableCell>)}
+                                </TableRow>     
+                            )
                         }
                         </TableBody>
                     </Table>
@@ -77,4 +77,4 @@ class FilterTable extends React.Component {
     }
 }
 
-export default FilterTable;
+export default PaidPassengerTable;
