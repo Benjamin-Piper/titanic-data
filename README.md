@@ -65,13 +65,13 @@ Other things I did to make the code cleaner:
 - Reduced usage of if statements
 - Maxmised usage of array functiosn
 
-### Frontend
+#### Frontend
 
 After researching and checking out the React docs a bit I decided to use a class as the component for the table. By using a class I was able to keep state of headings and rows. This meant that I could render promised data from the backend while also putting a quick and dirty `loading. . .` screen.
 
 **Note:** While rendering I needed to convert my maps to arrays as I found that React can't render objects.
 
-### Drawing a graph with Recharts (Optional task)
+#### Drawing a graph with Recharts (Optional task)
 
 After researching and installing Rechart with npm, I decided to display where the paid passengers embarked from.
 
@@ -81,7 +81,7 @@ Then came formatting the data into objects to be rendered into an svg by Rechart
 
 I also decided to keep styling of all components localised to their respective files to maintain encapsulation.
 
-### Filtering
+#### Filtering
 
 If I had more time I would have implemented more filters optimally such that they could be used simultaneously in an effective manner.
 
