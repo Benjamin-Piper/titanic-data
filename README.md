@@ -10,9 +10,11 @@ npm install
 npm start
 ```
 
-### Brief summary of my findings
+### Brief summary
 
-**TODO**
+Overall this was an enjoyable task, it has certainly taught me more about React and the people who were aboard the Titanic.
+
+I think it's really fascinating that we're able to hoist historical data and represent it in new and meaningful ways to the world.
 
 ### How I approached the task (in chronological order)
 
@@ -79,14 +81,8 @@ Then came formatting the data into objects to be rendered into an svg by Rechart
 
 I also decided to keep styling of all components localised to their respective files to maintain encapsulation.
 
-### Look into filtering TODO
+### Filtering
 
-- alphabetical?
-	- surname
-	- given names
-- enum?
-	- embarked from
-	- ticket class
-	- fare class
-- numerical
-	- id
+If I had more time I would have implemented more filters optimally such that they could be used simultaneously in an effective manner.
+
+What I ended up doing was creating a simple Filter component to render rows if people survided or not or both.
